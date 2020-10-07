@@ -14,7 +14,7 @@ class Client:
             command = input()
             command_els = command.split(' ')
             command_type = command_els[0]
-            self.address = self.target_host + ":1337/" + command_type + "/"
+            self.address = "http://"+self.target_host + ":1337/" + command_type + "/"
 
             if self.target_host != None:
                 if command_type == "init":
@@ -73,7 +73,7 @@ class Client:
     def process_init(self, command_elements: List):
         if len(command_elements) == 1:
             response = requests.post(self.address)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("Client is initialized")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -83,7 +83,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'filename': command_elements[1]}
             response = requests.post(self.address, params=parameters )
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("File is created")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -93,7 +93,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'filename': command_elements[1]}
             response = requests.get(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 with open('file', 'wb') as f:
                     f.write(response.content)
                 print("File is read")
@@ -107,7 +107,7 @@ class Client:
             content = file.read()
             parameters = {'filename': command_elements[1], 'content': content}
             response = requests.post(self.address, params=parameters )
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("File is written")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -117,7 +117,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'filename': command_elements[1]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("File was deleted")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -127,7 +127,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'filename': command_elements[1]}
             response = requests.get(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print(response.content)
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -137,7 +137,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'filename': command_elements[1]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("File was copied")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -147,7 +147,7 @@ class Client:
         if len(command_elements) == 3:
             parameters = {'filename': command_elements[1], 'target_dir': command_elements[2]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("File was moved")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -157,7 +157,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'directory': command_elements[1]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("Directory changed")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -167,7 +167,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'directory_name': command_elements[1]}
             response = requests.get(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print(response.content)
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -177,7 +177,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'directory_name': command_elements[1]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("Directory created")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
@@ -187,7 +187,7 @@ class Client:
         if len(command_elements) == 2:
             parameters = {'directory_name': command_elements[1]}
             response = requests.post(self.address, params=parameters)
-            if response.status_code == '200':
+            if response.status_code == 200:
                 print("Directory deleted")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
