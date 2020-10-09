@@ -134,11 +134,11 @@ class Client:
 
 
     def process_copy(self, command_elements: List):
-        if len(command_elements) == 2:
-            parameters = {'filename': command_elements[1]}
+        if len(command_elements) == 3:
+            parameters = {'filename': command_elements[1], 'target': command_elements[2]}
             response = requests.post(self.address, params=parameters)
             if response.status_code == 200:
-                print("File was copied")
+                print(f"File was copied to {command_elements[2]}")
         else:
             print("Incorrect number of arguments, use \'help\' to check the correct one")
 
