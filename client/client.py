@@ -1,10 +1,8 @@
 from typing import List
-from flask import Flask
 import requests
 import os.path
 import json
 
-api = Flask(__name__)
 
 class Client:
 
@@ -67,7 +65,7 @@ class Client:
         print("write <name of file> - reads a file and sends it to the storage\n")
         print("delete <name of file> - deletes file\n")
         print("info <name of file> - provides information about the file\n")
-        print("copy <name of file> - copies file\n")
+        print("copy <name of file> <target path> - copies file\n")
         print("move <name of file> <target path> - moves file to the target path\n")
         print("open_dir <directory name> - changes directory\n")
         print("read_dir <directory name> - prints the contents of the directory\n")
