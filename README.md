@@ -1,5 +1,7 @@
 # DSProject2
 
+<b>How it works</b>
+
 How does our project Ideally should work.
 
 User writes command to the command line using one of the commands which are:
@@ -44,3 +46,15 @@ and it becomes available to fetch data from it.
 To add new storage server get request with host ip should be sent to the namenode.
 So basically, we have thin client, most of the load goes to namenode, and storages just do the basic work they have to.
 Names repetitions are also considered while storing new file/directory.
+
+<b>How to run</b>
+
+Our project has problems with running in docker, you can use storage server image,
+but we recommend to use scripts of namenode and clients as they are. Run servers in docker,
+start namenode script and send host and port of storage to *hostip*:1337/init_serv/.
+Then run client and initialize namenode with command inithost *host_ip*.
+
+<b>Contribution:</b>
+Fronts Daniil - storage server,
+Tikhonov Nikita - namenode,
+Gudkov Mikhail - client (and docker :( )
